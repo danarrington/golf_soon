@@ -1,0 +1,175 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+
+</title><link href="/css/ajax.css" rel="stylesheet" type="text/css" /><link href="/css/bookingengine.css" rel="stylesheet" type="text/css" />
+	<script src="/ws/www.golfnow.com/js/jQuery/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="//golfnow.ugc.bazaarvoice.com/static/0079-en_us/bvapi.js"></script>
+	<script type="text/javascript" src="/js/jquery.livequery.min.js"></script>
+	<script src="/ws/www.golfnow.com/js/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		var prodId = '1037905';
+
+		$BV.configure("global", {
+			submissionContainerUrl: parent.submissionUrl,
+			allowSamePageSubmission: true,
+			userToken: '',
+			doLogin: function() {
+				parent.submitReview(prodId);
+			},
+			doShowSubmission: function() {
+				parent.submitReview(prodId);
+			},
+			onSubmissionReturn: function() {
+				$.fancybox.close();
+			},
+			doScrollSubmission: function() {
+				$('.fancybox-inner').scrollTo(0, 0);
+
+				return false;
+			}
+		});
+
+		$BV.ui("rr", "show_reviews", {
+			productId: prodId,
+			onEvent: function(json) {
+				showContentEventHandler();
+			}
+		});
+
+		function showContentEventHandler() {
+			$('div#BVRRRatingSummaryLinkReadID a').livequery(function() {
+				$(this).attr('href', 'javascript:parent.showReviews("' + prodId + '","/course-directory/washington-golf-courses/port-ludlow-golf-courses/resort-at-port-ludlow---tide-course")');
+			});
+		}
+	</script>
+	<style type="text/css">
+	    a
+        {
+            color:#43628D;
+        }
+        .clear
+            {
+                clear:both;
+                float:none;
+            }
+     
+	    .mapLarger, .drivingDir
+        {
+            text-decoration:none !important;
+            font-size:12px;
+        }
+        #BVRRSecondarySummaryContainer
+        {
+            padding:6px 0 10px 0;
+        }
+
+        .BVRRRatingOverall .BVRRRatingNormalOutOf, .BVRRRatingOverall .BVRRNumber  
+        {
+            font-size: 11px !important;
+            line-height: 1.8 !important;
+        }           
+        .BVRRRatingSummaryLinks
+        {
+            margin:0;
+            font-size:10px;
+            padding-top:4px;
+        }
+        .BVRRRatingOverall .BVRRRatingRangeNumber
+        {
+            padding-right:5px;
+        }
+        .BVRRRatingsHistogramButton
+        {
+            display:none;
+        }
+        .BVRRRatingSummaryLinkRead
+        {
+            margin-right: 2px !important;
+            padding-right: 3px !important;
+        }
+        .BVRRRatingNormalOutOf
+        {
+            display:none;
+        }
+        .BVRRRootElement a
+        {
+            color:#43628d !important;
+        }
+        a:hover 
+        {
+            color:#4b80b8;
+        } 
+        
+       ul.course-meta
+        {
+            margin:0 !imporant;
+            text-align:left !important;
+        }
+        
+           
+	</style>
+</head>
+<body class="recommendations">
+    <form name="form1" method="post" action="CoursePopUp.aspx?facilityid=1037905&amp;dl=false" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTc4MjQzNDY0Ng9kFgICAxBkZBYIZg8WAh4EVGV4dAUVUmVzb3J0IEF0IFBvcnQgTHVkbG93ZAIDD2QWBAIBDw8WAh4LTmF2aWdhdGVVcmwFZGh0dHA6Ly9tYXBzLmdvb2dsZS5jb20vbWFwcz9sbD00Ny45MDQ5MzYsLTEyMi42OTM2NjAmcT03NTErSGlnaGxhbmQrRHJpdmUrUG9ydCtMdWRsb3csK1dBKzk4MzY1LTk3OTRkZAIDDw8WAh8BBWhodHRwOi8vbWFwcy5nb29nbGUuY29tL21hcHM/bGw9NDcuOTA0OTM2LC0xMjIuNjkzNjYwJmY9ZCZxPTc1MStIaWdobGFuZCtEcml2ZStQb3J0K0x1ZGxvdywrV0ErOTgzNjUtOTc5NGRkAgQPZBYCZg9kFgICAQ9kFgoCAQ8PFgIfAAUBOWRkAgMPDxYCHwAFAjM2ZGQCBQ8PFgIfAAUFMywzNTdkZAIHDxYCHgdWaXNpYmxlaBYCAgEPDxYCHwAFAzAuMGRkAgkPFgIfAmgWAgIBDw8WAh8ABQEwZGQCBQ8WAh8ABdIFVGhlIEdvbGYgQ291cnNlIGF0IFRoZSBSZXNvcnQgQXQgUG9ydCBMdWRsb3cgaW5jbHVkZXMgdHdvIDktSG9sZSBHb2xmIENvdXJzZXM7IFRpZGUgYW5kIFRpbWJlci4gRWFjaCBHb2xmIENvdXJzZSBpcyBhcnRmdWxseSBzY3VscHRlZCBvdXQgb2YgZGVuc2UgZm9yZXN0IHNvIG5vIHR3byBob2xlcyBwbGF5IGFsaWtlLg0KVGhlIEdvbGYgQ291cnNlIGF0IFRoZSBSZXNvcnQgQXQgUG9ydCBMdWRsb3cgd2FzIGRlc2lnbmVkIGJ5IFJvYmVydCBNdWlyIEdyYXZlcyB0byBwcm92aWRlIGEgY2hhbGxlbmdpbmcsIHlldCByZXdhcmRpbmcgR29sZiBleHBlcmllbmNlIHdoaWxlIHByZXNlcnZpbmcgdGhlIHNwZWN0YWN1bGFyIG5hdHVyYWwgc3Vycm91bmRpbmdzIHdoZXJlIERlZXIgcm9hbSwgRWFnbGVzIGZseSBvdmVyaGVhZCwgY2VkYXIgc3R1bXBzIGVtZXJnZSBmcm9tIHdhdGVyIGhhemFyZHMsIGFuZCB3aWxkZmxvd2VycyBleHBsb2RlIGluIGEgcmlvdCBvZiBjb2xvcnMuDQoNCllvdSdsbCB3aW5kIHRocm91Z2ggbHVzaCBncmVlbnMgYW5kIGZhaXJ3YXlzIHRoYXQgb3Zlcmxvb2sgc2V2ZXJhbCBMYWtlcyBhbmQgU3RyZWFtcy4gWW91J2xsIHN0cm9sbCB0aHJvdWdoIHRvd2VyaW5nIGV2ZXJncmVlbnMgdGhhdCBvcGVuIHVwIHRvIHN0dW5uaW5nIHZpZXdzIG9mIEhvb2QgQ2FuYWwsIEx1ZGxvdyBCYXkgYW5kIHRoZSBPbHltcGljIGFuZCBDYXNjYWRlIE1vdW50YWlucy5kZDCmcAAItti7hC5jsvy0urrB9pkh" />
+</div>
+            
+        <div>
+            <div class="popup-info" >													
+			    <strong productid="1037905">
+			        Resort At Port Ludlow
+			    </strong>	
+		        <div id="BVRRSecondarySummaryContainer"></div>
+		        <div class="clear"></div>
+		        <p>
+		            	            
+                        
+                            751 Highland Drive
+                        
+                        <br />
+                        
+                            Port Ludlow, WA 98365-9794
+                        					        
+                    		   
+		        </p>													
+			</div>	
+			<div id="CourseMap" class="courseMapLinks">
+                <a id="ViewMapLink" class="mapLarger" href="http://maps.google.com/maps?ll=47.904936,-122.693660&amp;q=751+Highland+Drive+Port+Ludlow,+WA+98365-9794" target="_blank">
+                    Map
+                </a>
+                &nbsp|&nbsp;
+                <a id="ViewDrivingDirectionsLink" class="drivingDir" href="http://maps.google.com/maps?ll=47.904936,-122.693660&amp;f=d&amp;q=751+Highland+Drive+Port+Ludlow,+WA+98365-9794" target="_blank">
+                    Driving Directions
+                </a>
+            </div>	
+            
+                <div id="CourseInfoBar1_courseMetaContainer" class="course-meta-container">
+    <ul id="CourseInfoBar1_CourseInfoTable" class="course-meta">
+    <li><strong><span id="CourseInfoBar1_lblHole">9</span></strong> holes</li>
+    <li><strong><span id="CourseInfoBar1_lblPar">36</span></strong> par</li>
+    <li><strong><span id="CourseInfoBar1_lblYards">3,357</span></strong> yards</li>
+    
+    
+    </ul><!-- end .course-meta -->
+    
+
+<div class="clear"></div>
+</div><!-- end .course-meta-container -->
+
+           
+            <div style="width:335px;" class="popup-bottom">
+                The Golf Course at The Resort At Port Ludlow includes two 9-Hole Golf Courses; Tide and Timber. Each Golf Course is artfully sculpted out of dense forest so no two holes play alike.
+The Golf Course at The Resort At Port Ludlow was designed by Robert Muir Graves to provide a challenging, yet rewarding Golf experience while preserving the spectacular natural surroundings where Deer roam, Eagles fly overhead, cedar stumps emerge from water hazards, and wildflowers explode in a riot of colors.
+
+You'll wind through lush greens and fairways that overlook several Lakes and Streams. You'll stroll through towering evergreens that open up to stunning views of Hood Canal, Ludlow Bay and the Olympic and Cascade Mountains.
+            </div>
+        </div>  
+    </form>
+</body>
+</html>

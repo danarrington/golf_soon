@@ -239,6 +239,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri
   quiet_assets
   rails (= 4.1.0)
   rails_layout

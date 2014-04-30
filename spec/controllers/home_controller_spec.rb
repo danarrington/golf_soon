@@ -9,4 +9,19 @@ describe HomeController do
     end
   end
 
+  context 'With logged in User' do
+    before :each do
+      sign_in create(:user)
+    end
+    context 'With no saved courses' do
+
+      it 'redirects to course picker page' do
+        get :index
+
+        expect(response).to redirect_to pick_courses_path
+      end
+
+    end
+  end
+
 end

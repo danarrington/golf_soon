@@ -1,0 +1,4 @@
+x Scrape page
+x Persist golf courses we don't have
+- When user signs in, if they have no courses ask them to pick some.
+- Persist times we don't have

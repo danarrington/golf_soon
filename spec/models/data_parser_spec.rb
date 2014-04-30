@@ -23,6 +23,12 @@ describe DataParser do
 
       expect(Course.count).to eq 1
     end
+
+    it 'adds the new course id to known course ids' do
+      subject.get_latest_times
+
+      expect(subject.instance_variable_get(:@known_course_ids)).to include Course.last.gn_id
+    end
   end
 
   context 'parsing page with only known courses' do

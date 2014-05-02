@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419012013) do
+ActiveRecord::Schema.define(version: 20140502015247) do
 
   create_table "courses", force: true do |t|
     t.integer  "gn_id"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20140419012013) do
     t.integer  "yards"
     t.float    "rating"
     t.integer  "slope"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

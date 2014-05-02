@@ -8,4 +8,13 @@ class HomeController < ApplicationController
   def pick_courses
     @courses = Course.all
   end
+
+  def pick_courses_submit
+
+    course_ids = params[:course_ids].split(',')
+    courses = Course.find(course_ids)
+    current_user.courses << courses
+
+    render text: params[:course_ids].split(',')
+  end
 end

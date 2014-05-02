@@ -4,4 +4,5 @@ GolfSoon::Application.routes.draw do
   resources :users
 
   get '/pick_courses' => 'home#pick_courses', :as => :pick_courses
+  post '/pick_courses' => 'home#pick_courses_submit'
 end

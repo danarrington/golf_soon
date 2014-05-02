@@ -1,3 +1,21 @@
-.div
+/dl.accordion data-accordion=''
+/  -@courses.each do |course|
+/    dd
+/      a href="#course#{course.id}" =course.name
+/      div.content id="course#{course.id}"
+/        | #{course.city} #{course.holes} holes
+/        button Add
+
+div.row
+  p
+    | Let's pick some favorite courses.  The courses you pick will be shown by default when looking for tee times.
+    | You can modify this list later.
+    a.js-pick-course-button href="#" words
+div
   -@courses.each do |course|
-    .div =course.name
+    div.row
+      a.button.expand.js-pick-course-button data-course_id=course.id href='#' =course.name
+  div.row
+    =form_tag({}, class: 'js-pick-courses-form')
+      =hidden_field_tag('course_ids')
+      input.button.expand.success type='submit' id='submit'

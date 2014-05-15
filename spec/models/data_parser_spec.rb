@@ -46,4 +46,26 @@ describe DataParser do
       subject.get_latest_times
     end
   end
+
+  context 'parsing page with one tee time' do
+
+    before :each do
+      f = File.open('spec/test_pages/one_result.html')
+      doc = Nokogiri::XML(f)
+      f.close
+      subject.stub(:get_doc_to_parse){doc}
+      FactoryGirl.create(:course, id: 1037905) #course id in one_result
+    end
+
+    it 'gets the tee time info' do
+      TeeTimeParser.should_receive(:get_tee_time).and_call_original
+      subject.get_latest_times
+    end
+
+    it 'saves the tee time' do
+      TeeTime.any_instance.should_receive(:save)
+      subject.get_latest_times
+    end
+
+  end
 end

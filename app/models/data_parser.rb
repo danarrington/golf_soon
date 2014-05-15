@@ -3,20 +3,24 @@ class DataParser
   def get_latest_times
     @known_course_ids = Course.ids
     doc = get_doc_to_parse
-    doc.css('.cubeWrapper').each { |cube| save_time parse_time_cube cube }
+    date = Date.parse(doc.css('.dayL').first.text)
+    doc.css('.cubeWrapper').each { |cube| save_time parse_time_cube(cube, date) }
   end
 
-  def parse_time_cube(cube)
-    course_id = cube.css('.courseName a').first['productid'].to_i
-    unless @known_course_ids.include?(course_id)
-      course = CourseParser.new.get_course_info(course_id)
-      course.save!
-      @known_course_ids << course.gn_id
-    end
+  def parse_time_cube(cube, date)
+    tee_time = TeeTimeParser.get_tee_time(cube, date)
+    save_new_course(tee_time.course_id) unless @known_course_ids.include?(tee_time.course_id)
+    tee_time
+  end
+
+  def save_new_course(course_id)
+    course = CourseParser.new.get_course_info(course_id)
+    course.save!
+    @known_course_ids << course.gn_id
   end
 
   def save_time(tee_time)
-    # code here
+    tee_time.save
   end
 
   def get_doc_to_parse

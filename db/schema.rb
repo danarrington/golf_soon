@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20140506144907) do
     t.integer  "players"
     t.integer  "percent_off"
     t.string   "booking_link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

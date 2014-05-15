@@ -7,6 +7,7 @@ class CreateTeeTime < ActiveRecord::Migration
       t.integer :players
       t.integer :percent_off
       t.string :booking_link
+      t.timestamps
     end
   end
 end

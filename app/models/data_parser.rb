@@ -4,12 +4,12 @@ class DataParser
     @known_course_ids = Course.ids
     doc = get_doc_to_parse
     date = Date.parse(doc.css('.dayL').first.text)
-    doc.css('.cubeWrapper').each { |cube| save_time parse_time_cube(cube, date) }
+    doc.css('.cubeWrapper').each { |cube| save_or_update_time parse_time_cube(cube, date) }
   end
 
   def parse_time_cube(cube, date)
     tee_time = TeeTimeParser.get_tee_time(cube, date)
-    save_new_course(tee_time.course_id) unless @known_course_ids.include?(tee_time.course_id)
+    save_new_course(tee_time[:course_id]) unless @known_course_ids.include?(tee_time[:course_id])
     tee_time
   end
 
@@ -19,8 +19,15 @@ class DataParser
     @known_course_ids << course.gn_id
   end
 
-  def save_time(tee_time)
-    tee_time.save
+  def save_or_update_time(tee_time)
+    existing_times = TeeTime.where(course_id: tee_time[:course_id], tee_time: tee_time[:tee_time])
+    if existing_times.any?
+      existing_time = existing_times.first
+      existing_time.assign_attributes(tee_time)
+      existing_time.save
+    else
+      TeeTime.create(tee_time)
+    end
   end
 
   def get_doc_to_parse

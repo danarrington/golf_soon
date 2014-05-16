@@ -37,7 +37,7 @@ describe DataParser do
       doc = Nokogiri::XML(f)
       f.close
       subject.stub(:get_doc_to_parse){doc}
-      FactoryGirl.create(:course, id: 1037905) #course id in one_result
+      FactoryGirl.create(:course, gn_id: 1037905) #course id in one_result
     end
 
     it 'does not save any courses' do
@@ -54,7 +54,7 @@ describe DataParser do
       doc = Nokogiri::XML(f)
       f.close
       subject.stub(:get_doc_to_parse){doc}
-      FactoryGirl.create(:course, id: 1037905) #course id in one_result
+      FactoryGirl.create(:course, gn_id: 1037905, id: 3) #course id in one_result
     end
 
     it 'gets the tee time info' do
@@ -67,9 +67,14 @@ describe DataParser do
       subject.get_latest_times
     end
 
+    it 'sets the course_id to our id, not gn id' do
+      subject.get_latest_times
+      expect(TeeTime.last.course_id).to eq 3
+    end
+
     context 'with existing tee time that has changed' do
       before :each do
-        TeeTime.create(course_id: 1037905, tee_time: DateTime.new(2014, 5, 10, 13, 57, 0).change(:offset=>Time.now.zone))
+        TeeTime.create(course_id: 3, tee_time: DateTime.new(2014, 5, 10, 13, 57, 0).change(:offset=>Time.now.zone))
       end
 
       it 'updates existing tee time' do
@@ -80,7 +85,7 @@ describe DataParser do
 
     context 'with existing tee time that has not changed' do
       before :each do
-        TeeTime.create(course_id: 1037905, tee_time: DateTime.new(2014, 5, 10, 13, 57, 0).change(:offset=>Time.now.zone),
+        TeeTime.create(course_id: 3, tee_time: DateTime.new(2014, 5, 10, 13, 57, 0).change(:offset=>Time.now.zone),
         percent_off: 80, players: 2, booking_link: '/seattle/tee-times/golf-courses/wa---seattle-metro/details?TID=216056326&amp;TType=DISC',
         price: 13.0)
       end

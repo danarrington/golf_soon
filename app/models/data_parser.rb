@@ -1,7 +1,7 @@
 class DataParser
 
   def get_latest_times
-    @known_course_ids = Course.ids
+    @known_course_ids = Course.all.collect(&:gn_id)
     doc = get_doc_to_parse
     date = Date.parse(doc.css('.dayL').first.text)
     doc.css('.cubeWrapper').each { |cube| save_or_update_time parse_time_cube(cube, date) }
@@ -10,6 +10,7 @@ class DataParser
   def parse_time_cube(cube, date)
     tee_time = TeeTimeParser.get_tee_time(cube, date)
     save_new_course(tee_time[:course_id]) unless @known_course_ids.include?(tee_time[:course_id])
+    tee_time[:course_id] = Course.where(gn_id: tee_time[:course_id]).first.id
     tee_time
   end
 

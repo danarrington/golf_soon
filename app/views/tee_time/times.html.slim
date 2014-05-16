@@ -1,0 +1,15 @@
+.row.time-filters
+  .small-12.large-4.large-offset-4.columns
+    .row
+      .small-4.columns One
+      .small-4.columns Two
+      .small-4.columns Three
+.row.list-of-times
+  .small-12.large-6.large-offset-3.columns
+    - @tee_times.each do |t|
+      .tee-time
+        span.time #{t.tee_time.strftime('%l:%M %P')}
+        span.course-name = t.course.name
+        span.price #{t.pretty_price}
+        - if t.percent_off
+          span.savings Save #{t.percent_off}%

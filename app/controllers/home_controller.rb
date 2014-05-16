@@ -5,6 +5,7 @@ class HomeController < ApplicationController
       redirect_to pick_courses_path
     end
   end
+
   def pick_courses
     @courses = Course.all
   end

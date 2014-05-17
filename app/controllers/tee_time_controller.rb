@@ -3,6 +3,6 @@ class TeeTimeController < ApplicationController
 
   def times
 
-    @tee_times = TeeTime.where(course_id: current_user.courses.collect(&:id))
+    @tee_times = TeeTime.get_times({user:current_user})
   end
 end

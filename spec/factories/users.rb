@@ -9,4 +9,8 @@ FactoryGirl.define do
     # required if the Devise Confirmable module is used
     # confirmed_at Time.now
   end
+
+  trait :with_favorite do
+    after(:create) {|user| user.courses << create(:course)}
+  end
 end

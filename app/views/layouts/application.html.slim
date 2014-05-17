@@ -10,7 +10,7 @@ html
     == javascript_include_tag 'vendor/modernizr'
     == javascript_include_tag 'application', 'data-turbolinks-track' => true
     == csrf_meta_tags
-  body
+  body[data-no-turbolink]
     header
       == render 'layouts/navigation'
     main[role="main"]

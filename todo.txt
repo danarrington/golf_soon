@@ -4,8 +4,12 @@ x When user signs in, if they have no courses ask them to pick some.
 x Persist times we don't have
 
 x Update existing times
-- Display all times
-- Display times for my favorites
+x Display all times
+x Display times for my favorites
+- Filters
+  - Weekend/All
+  - Sort by saving/time/price
+  - # players
 - Index teetime/course
 - Deploy
 

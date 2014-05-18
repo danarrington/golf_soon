@@ -21,7 +21,7 @@ class DataParser
   end
 
   def save_or_update_time(tee_time)
-    existing_times = TeeTime.where(course_id: tee_time[:course_id], tee_time: tee_time[:tee_time])
+    existing_times = TeeTime.where(course_id: tee_time[:course_id], gn_id: tee_time[:gn_id])
     if existing_times.any?
       existing_time = existing_times.first
       existing_time.assign_attributes(tee_time)
@@ -33,7 +33,7 @@ class DataParser
 
   def get_doc_to_parse
     #url = "http://www.golfnow.com/seattle/tee-times/golf-courses/wa---seattle-metro/search?FID=-1&OID=9543&AID=61&SID={01E99287-F7C4-4A11-9828-3A0C5F9499B0}&FDT=3/27/2014%2012:00:00%20AM&TDT=3/27/2014%2012:00:00%20AM&PPN=all"
-    url = "http://www.golfnow.com/seattle/tee-times/golf-courses/wa---seattle-metro/search"
+    url = "http://www.golfnow.com/seattle/tee-times/golf-courses/wa---seattle-metro/search?PPN=all"
     doc = Nokogiri::HTML(open(url))
   end
 end

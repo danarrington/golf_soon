@@ -29,6 +29,8 @@ describe TeeTimeParser do
     its([:percent_off]) { should eq 80}
     its([:booking_link]) { should eq '/seattle/tee-times/golf-courses/wa---seattle-metro/details?TID=216056326&TType=DISC'}
     its([:course_id]) { should eq 1037905}
+    its([:gn_id]) {should eq 216056326}
+
   end
 
   context 'with one cranky result' do

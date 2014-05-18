@@ -7,9 +7,10 @@
 .row.list-of-times
   .small-12.large-6.large-offset-3.columns
     - @tee_times.each do |t|
-      .tee-time
-        span.time #{t.tee_time.strftime('%l:%M %P')}
-        span.course-name = t.course.name
-        span.price #{t.pretty_price}
+      .tee-time data-gnid=t.gn_id
+        div.course-name = t.course.name
+        span.time.stat #{pretty_time(t.tee_time)}
+        span.price.stat #{t.pretty_price}
+        span.players.stat #{t.players} Players
         - if t.percent_off
-          span.savings Save #{t.percent_off}%
+          span.savings.stat Save #{t.percent_off}%

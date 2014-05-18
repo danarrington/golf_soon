@@ -74,25 +74,27 @@ describe DataParser do
 
     context 'with existing tee time that has changed' do
       before :each do
-        TeeTime.create(course_id: 3, tee_time: DateTime.new(2014, 5, 10, 13, 57, 0).change(:offset=>Time.now.zone))
+        TeeTime.create(course_id: 3, gn_id: 216056326, price: 10.0)
       end
 
       it 'updates existing tee time' do
         subject.get_latest_times
         expect(TeeTime.count).to eq 1
+        expect(TeeTime.last.price).to eq 13.0
       end
     end
 
     context 'with existing tee time that has not changed' do
       before :each do
-        TeeTime.create(course_id: 3, tee_time: DateTime.new(2014, 5, 10, 13, 57, 0).change(:offset=>Time.now.zone),
+        TeeTime.create(course_id: 3, gn_id: 216056326,
         percent_off: 80, players: 2, booking_link: '/seattle/tee-times/golf-courses/wa---seattle-metro/details?TID=216056326&amp;TType=DISC',
         price: 13.0)
       end
 
-      it 'updates existing tee time' do
+      it 'does not update existing tee time' do
         updated_at = TeeTime.last.updated_at
         subject.get_latest_times
+        expect(TeeTime.count).to eq 1
         expect(TeeTime.last.updated_at.to_a).to eq updated_at.to_a
       end
     end

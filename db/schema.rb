@@ -39,10 +39,11 @@ ActiveRecord::Schema.define(version: 20140506144907) do
   create_table "tee_times", force: true do |t|
     t.datetime "tee_time"
     t.integer  "course_id"
-    t.decimal  "price"
+    t.decimal  "price",                  precision: 5, scale: 2
     t.integer  "players"
     t.integer  "percent_off"
     t.string   "booking_link"
+    t.integer  "gn_id",        limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end

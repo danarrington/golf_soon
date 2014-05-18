@@ -10,9 +10,11 @@ class TeeTimeParser
     savings = cube.css('.savings').first.text.match(/(?<percent>\d+)%/)[:percent].to_i unless cube.css('.savings').first.text.empty?
     link = cube.css('.btnCubeLink .orangeButton').first['href'] if cube.css('.btnCubeLink .orangeButton').any?
     course_id = cube.css('.courseName a').first['productid'].to_i
+    gn_id = cube.css('.icons').first['id'].match(/TTS_(\d*)/)[1].to_i
 
     {tee_time: datetime, price: price, players: players,
-                percent_off: savings, booking_link: link, course_id: course_id}
+                percent_off: savings, booking_link: link,
+                course_id: course_id, gn_id:gn_id}
 
   end
 end

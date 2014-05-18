@@ -15,4 +15,12 @@ x Display times for my favorites
 
 - Get all times
 
+- Get icon info (holes, walking etc)
+
+
+*** Bugs ***
+-Choosing courses
+  - Be able to remove favorites
+  - Redirect to times after submitting
+
 

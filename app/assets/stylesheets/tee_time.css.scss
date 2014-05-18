@@ -1,3 +1,16 @@
 // Place all the styles related to the TeeTime controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$background-color: #00b4ff;
+
+.tee-time {
+  border: 1px solid gray;
+  margin: 5px;
+  padding: 5px;
+  background-color:white;
+  .course-name { text-align:center;margin-bottom:5px;}
+  .stat { padding:0px 5px 0px 5px;}
+}
+
+

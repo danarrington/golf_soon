@@ -22,6 +22,14 @@ describe HomeController do
       end
 
     end
+
+    context 'with saved courses' do
+      it 'redirects to tee times page' do
+        User.first.courses << create(:course)
+        get :index
+        expect(response).to redirect_to times_path
+      end
+    end
   end
 
 end

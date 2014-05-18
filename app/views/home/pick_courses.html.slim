@@ -8,13 +8,12 @@
 
 div.row
   p
-    | Let's pick some favorite courses.  The courses you pick will be shown by default when looking for tee times.
-    | You can modify this list later.
-    a.js-pick-course-button href="#" words
+    |  Let's pick some favorite courses.  The courses you pick will be shown by default when looking for tee times.
+    |  You can modify this list later.
 div
   -@courses.each do |course|
     div.row
-      a.button.expand.js-pick-course-button data-course_id=course.id href='#' =course.name
+      a.button.expand.js-pick-course-button class=('alert' if @favorites.include?(course.id)) data-course_id=course.id href='#' =course.name
   div.row
     =form_tag({}, class: 'js-pick-courses-form')
       =hidden_field_tag('course_ids')

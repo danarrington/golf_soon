@@ -19,13 +19,13 @@ describe DataParser do
 
     it 'saves the unknown course' do
 
-      subject.get_latest_times
+      subject.find_times_for
 
       expect(Course.count).to eq 1
     end
 
     it 'adds the new course id to known course ids' do
-      subject.get_latest_times
+      subject.find_times_for
 
       expect(subject.instance_variable_get(:@known_course_ids)).to include Course.last.gn_id
     end
@@ -43,7 +43,7 @@ describe DataParser do
     it 'does not save any courses' do
       CourseParser.should_receive(:new).exactly(0).times
 
-      subject.get_latest_times
+      subject.find_times_for
     end
   end
 
@@ -59,16 +59,16 @@ describe DataParser do
 
     it 'gets the tee time info' do
       TeeTimeParser.should_receive(:get_tee_time).and_call_original
-      subject.get_latest_times
+      subject.find_times_for
     end
 
     it 'saves the tee time' do
       TeeTime.any_instance.should_receive(:save)
-      subject.get_latest_times
+      subject.find_times_for
     end
 
     it 'sets the course_id to our id, not gn id' do
-      subject.get_latest_times
+      subject.find_times_for
       expect(TeeTime.last.course_id).to eq 3
     end
 
@@ -78,7 +78,7 @@ describe DataParser do
       end
 
       it 'updates existing tee time' do
-        subject.get_latest_times
+        subject.find_times_for
         expect(TeeTime.count).to eq 1
         expect(TeeTime.last.price).to eq 13.0
       end
@@ -93,7 +93,7 @@ describe DataParser do
 
       it 'does not update existing tee time' do
         updated_at = TeeTime.last.updated_at
-        subject.get_latest_times
+        subject.find_times_for
         expect(TeeTime.count).to eq 1
         expect(TeeTime.last.updated_at.to_a).to eq updated_at.to_a
       end

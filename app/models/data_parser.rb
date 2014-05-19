@@ -1,8 +1,15 @@
 class DataParser
 
   def get_latest_times
+    (Date.today.to_date .. 7.days.from_now).each do |date|
+      find_times_for date
+      sleep(5)
+    end
+  end
+
+  def find_times_for(date = nil)
     @known_course_ids = Course.all.collect(&:gn_id)
-    doc = get_doc_to_parse
+    doc = get_doc_to_parse date
     date = Date.parse(doc.css('.dayL').first.text)
     doc.css('.cubeWrapper').each { |cube| save_or_update_time parse_time_cube(cube, date) }
   end
@@ -31,9 +38,11 @@ class DataParser
     end
   end
 
-  def get_doc_to_parse
+  def get_doc_to_parse date
     #url = "http://www.golfnow.com/seattle/tee-times/golf-courses/wa---seattle-metro/search?FID=-1&OID=9543&AID=61&SID={01E99287-F7C4-4A11-9828-3A0C5F9499B0}&FDT=3/27/2014%2012:00:00%20AM&TDT=3/27/2014%2012:00:00%20AM&PPN=all"
-    url = "http://www.golfnow.com/seattle/tee-times/golf-courses/wa---seattle-metro/search?PPN=all"
+    date_format = date.strftime('%m/%d/%y')
+    date_param = "FDT=#{date_format}&TDT=#{date_format}"
+    url = "http://www.golfnow.com/seattle/tee-times/golf-courses/wa---seattle-metro/search?#{date_param}&PPN=all"
     doc = Nokogiri::HTML(open(url))
   end
 end

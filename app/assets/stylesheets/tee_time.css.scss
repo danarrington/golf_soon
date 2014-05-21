@@ -13,4 +13,25 @@ $background-color: #00b4ff;
   .stat { padding:0px 5px 0px 5px;}
 }
 
+.filter {
+  .selected {
+  }
+  .option {
+//    display: none;
+    width:80px;
+    height:80px;
+    background-color: $background-color;
+    cursor:pointer;
+    color: white;
+    text-align:center;
+    line-height:80px;
+    border: 1px solid black;
+  }
+  .unselected {
+    position:absolute;
+    z-index: 1;
+  }
+  .hidden { display:none;}
+}
+
 

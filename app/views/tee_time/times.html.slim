@@ -1,7 +1,10 @@
 .row.time-filters
   .small-12.large-4.large-offset-4.columns
     .row
-      .small-4.columns One
+      .small-4.columns
+        .filter
+          .selected.option Weekend
+          .unselected.option.hidden data-filter="days" data-value="all" All
       .small-4.columns Two
       .small-4.columns Three
 .row.list-of-times
@@ -14,3 +17,10 @@
         span.players.stat #{t.players} Players
         - if t.percent_off
           span.savings.stat Save #{t.percent_off}%
+
+
+.hidden-form
+  =form_for @filter, url: times_path, method: 'post' do |f|
+    =f.hidden_field :days, value: 'weekend', class: 'js-value-days'
+    input.hidden type="submit"
+

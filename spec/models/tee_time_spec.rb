@@ -6,7 +6,7 @@ describe TeeTime do
     past_time = create(:tee_time, tee_time: Date.yesterday)
     future_time = create(:tee_time, tee_time: Date.tomorrow)
 
-    times = TeeTime.get_times
+    times = TeeTime.get_times(TeeTimeFilter.new)
     expect(times.count).to eq 1
     expect(times).not_to include past_time
   end
@@ -17,14 +17,21 @@ describe TeeTime do
       time_from_favorite = create(:tee_time, course: user.courses.first)
       time_from_other = create(:tee_time, course: create(:course))
 
-      times = TeeTime.get_times({user: user})
+      times = TeeTime.get_times(TeeTimeFilter.new(user: user))
       expect(times.count).to eq 1
       expect(times).not_to include time_from_other
     end
   end
+
   it 'returns only weekend times when filtered by weekend' do
-    pending
-    filter = {days: :weekend}
+    filter = TeeTimeFilter.new(days: 'weekend')
+    monday = Date.commercial(Date.today.year, Date.today.cweek, 1)
+    tuesday_time = create(:tee_time, tee_time: monday+1.day)
+    saturday_time = create(:tee_time, tee_time:monday+5.days)
+    Timecop.travel(monday) do
+      times = TeeTime.get_times(filter)
+      expect(times).not_to include tuesday_time
+    end
 
   end
 end

@@ -10,13 +10,13 @@ feature 'Listing Tee Times' do
   scenario 'Signed in user with favorites gets redirected to list favorites' do
 
     course = create(:course, name: 'Cosmo Golf Course')
-    time = create(:tee_time, course_id: course, tee_time: DateTime.parse('11:57'))
+    time = create(:tee_time, course: course, tee_time: saturday_10_am)
     user.courses << course
     user.save
 
     visit '/'
-
-    expect(page).to have_content '11:57'
+    puts TeeTime.first.inspect
+    expect(page).to have_content '10:00'
   end
 
 end

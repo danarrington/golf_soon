@@ -13,7 +13,7 @@ x Display times for my favorites
 - Index teetime/course
 - Deploy
 
-- Get all times
+x Get all times
 
 - Get icon info (holes, walking etc)
 

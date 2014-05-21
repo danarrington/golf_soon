@@ -5,10 +5,14 @@ class TeeTime < ActiveRecord::Base
     "$%.2f" % self[:price]
   end
 
-  def self.get_times(options = {})
+  def self.get_times(options)
     query = all.where('tee_time > ?', Time.now)
-    query = query.where(course_id: options[:user].courses.collect(&:id)) if options[:user]
+    query = query.where(course_id: options.user.courses.collect(&:id)) if options.user
+    if options.days == 'weekend'
+      saturday = Date.commercial(Date.today.year, Date.today.cweek, 6).in_time_zone('Pacific Time (US & Canada)')
+      query = query.where(tee_time: (saturday .. saturday + 2.days))
+    end
 
-    query
+    query.includes(:course)
   end
 end

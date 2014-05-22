@@ -1,15 +1,8 @@
-.row.time-filters
-  .small-12.large-4.large-offset-4.columns
-    .row
-      .small-4.columns
-        .filter
-          .selected.option Weekend
-          .unselected.option.hidden data-filter="days" data-value="all" All
-      .small-4.columns Two
-      .small-4.columns Three
+=render 'filter', locals={filter:@filter.hash}
 .row.list-of-times
   .small-12.large-6.large-offset-3.columns
     - @tee_times.each do |t|
+      =render 'render_day_if_necessary', locals={t:t}
       .tee-time data-gnid=t.gn_id
         div.course-name = t.course.name
         span.time.stat #{pretty_time(t.tee_time)}
@@ -20,7 +13,7 @@
 
 
 .hidden-form
-  =form_for @filter, url: times_path, method: 'post' do |f|
+  =form_for @filter, url: times_path, html: {class: 'js-filter-form'}, method: 'post' do |f|
     =f.hidden_field :days, value: 'weekend', class: 'js-value-days'
     input.hidden type="submit"
 

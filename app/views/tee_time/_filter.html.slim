@@ -1,0 +1,11 @@
+.row.time-filters
+  .small-12.large-4.large-offset-4.columns
+    .row
+      .small-4.columns
+        .filter
+          -filter[:days].select{|k,v| v[:selected]}.each do |val|
+            .selected.option #{val[1][:print]}
+          -filter[:days].select{|k,v| !v[:selected]}.each do |val|
+            .unselected.option.hidden data-filter="days" data-value="#{val[1][:value]}" #{val[1][:print]}
+      .small-4.columns Two
+      .small-4.columns Three

@@ -15,5 +15,6 @@
 .hidden-form
   =form_for @filter, url: times_path, html: {class: 'js-filter-form'}, method: 'post' do |f|
     =f.hidden_field :days, value: 'weekend', class: 'js-value-days'
+    =f.hidden_field :sort_by, value: 'percent_off', class: 'js-value-sort'
     input.hidden type="submit"
 

@@ -32,7 +32,32 @@ describe TeeTime do
       times = TeeTime.get_times(filter)
       expect(times).not_to include tuesday_time
     end
+  end
 
+  context 'when sort_by is set' do
+    it 'can sort by tee time' do
+      create(:tee_time, tee_time: 5.hour.from_now)
+      early_time = create(:tee_time, tee_time: 1.hour.from_now)
+
+      times = TeeTime.get_times(TeeTimeFilter.new(sort_by: 'tee_time'))
+      expect(times.first).to eq early_time
+    end
+
+    it 'can sort by savings' do
+      create(:tee_time, percent_off: 5)
+      more_off = create(:tee_time, percent_off: 80)
+
+      times = TeeTime.get_times(TeeTimeFilter.new(sort_by: 'percent_off'))
+      expect(times.first).to eq more_off
+    end
+
+    it 'can sort by number of players' do
+      create(:tee_time, players: 2)
+      more_players = create(:tee_time, players: 4)
+
+      times = TeeTime.get_times(TeeTimeFilter.new(sort_by: 'players'))
+      expect(times.first).to eq more_players
+    end
   end
 end
 

@@ -13,6 +13,12 @@ class TeeTime < ActiveRecord::Base
       query = query.where(tee_time: (saturday .. saturday + 2.days))
     end
 
+    if options.sort_by
+      sort_direction = options.sort_by == 'tee_time' ? 'asc' : 'desc'
+      query = query.order("#{options.sort_by} #{sort_direction}")
+
+    end
+
     query.includes(:course)
   end
 end

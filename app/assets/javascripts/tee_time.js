@@ -4,7 +4,8 @@ $(document).ready(function() {
     });
 
     $('.filter .unselected.option').click(function(){
-        $('.js-value-days').val($(this).data('value'));
+        var filter = $(this).data('filter');
+        $('.js-value-'+ filter).val($(this).data('value'));
         $('.js-filter-form').submit();
     })
 });

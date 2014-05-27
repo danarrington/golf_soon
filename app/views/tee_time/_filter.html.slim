@@ -5,7 +5,14 @@
         .filter
           -filter[:days].select{|k,v| v[:selected]}.each do |val|
             .selected.option #{val[1][:print]}
-          -filter[:days].select{|k,v| !v[:selected]}.each do |val|
-            .unselected.option.hidden data-filter="days" data-value="#{val[1][:value]}" #{val[1][:print]}
-      .small-4.columns Two
+          .unselected-container
+            -filter[:days].select{|k,v| !v[:selected]}.each do |val|
+              .unselected.option.hidden data-filter="days" data-value="#{val[1][:value]}" #{val[1][:print]}
+      .small-4.columns
+        .filter
+          -filter[:sort_by].select{|k,v| v[:selected]}.each do |val|
+            .selected.option #{val[1][:print]}
+          .unselected-container
+            -filter[:sort_by].select{|k,v| !v[:selected]}.each do |val|
+              .unselected.option.hidden data-filter="sort" data-value="#{val[1][:value]}" #{val[1][:print]}
       .small-4.columns Three

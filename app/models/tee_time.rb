@@ -14,9 +14,12 @@ class TeeTime < ActiveRecord::Base
     end
 
     if options.sort_by
-      sort_direction = options.sort_by == 'tee_time' ? 'asc' : 'desc'
+      sort_direction = options.sort_by == 'percent_off' ? 'desc' : 'asc'
       query = query.order("#{options.sort_by} #{sort_direction}")
+    end
 
+    if options.min_players
+      query = query.where("players >= #{options.min_players}")
     end
 
     query.includes(:course)

@@ -51,12 +51,23 @@ describe TeeTime do
       expect(times.first).to eq more_off
     end
 
-    it 'can sort by number of players' do
-      create(:tee_time, players: 2)
-      more_players = create(:tee_time, players: 4)
+    it 'can sort by price' do
+      create(:tee_time, price: 40)
+      cheaper_time = create(:tee_time, price: 20)
 
-      times = TeeTime.get_times(TeeTimeFilter.new(sort_by: 'players'))
-      expect(times.first).to eq more_players
+      times = TeeTime.get_times(TeeTimeFilter.new(sort_by: 'price'))
+      expect(times.first).to eq cheaper_time
+    end
+  end
+
+  context 'when minimum players is set' do
+    it 'does not return tee times with less than the number of players available' do
+      too_few_players = create :tee_time, players:2
+      more_players= create :tee_time, players:3
+
+      times = TeeTime.get_times(TeeTimeFilter.new(min_players: 3))
+      expect(times).not_to include too_few_players
+
     end
   end
 end

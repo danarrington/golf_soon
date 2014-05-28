@@ -15,4 +15,11 @@
           .unselected-container
             -filter[:sort_by].select{|k,v| !v[:selected]}.each do |val|
               .unselected.option.hidden data-filter="sort" data-value="#{val[1][:value]}" #{val[1][:print]}
-      .small-4.columns Three
+      .small-4.columns
+        .filter
+          -filter[:min_players].select{|k,v| v[:selected]}.each do |val|
+            .selected.option #{val[1][:print]}
+          .unselected-container
+            -filter[:min_players].select{|k,v| !v[:selected]}.each do |val|
+              .unselected.option.hidden data-filter="players" data-value="#{val[1][:value]}" #{val[1][:print]}
+

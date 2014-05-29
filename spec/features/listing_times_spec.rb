@@ -15,7 +15,6 @@ feature 'Listing Tee Times' do
     user.save
 
     visit '/'
-    puts TeeTime.first.inspect
     expect(page).to have_content '10:00'
   end
 

@@ -16,6 +16,6 @@
   =form_for @filter, url: times_path, html: {class: 'js-filter-form'}, method: 'post' do |f|
     =f.hidden_field :days, value: 'weekend', class: 'js-value-days'
     =f.hidden_field :sort_by, value: 'percent_off', class: 'js-value-sort'
-    =f.hidden_field :min_players, value: 'min_players', class: 'js-value-players'
+    =f.hidden_field :min_players, value: '2', class: 'js-value-players'
     input.hidden type="submit"
 

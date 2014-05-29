@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $('.filter .selected').click(function(){
-        $('.unselected').toggleClass('hidden');
+        console.log($(this))
+        $(this).siblings().children('.unselected').toggleClass('hidden');
     });
 
     $('.filter .unselected.option').click(function(){

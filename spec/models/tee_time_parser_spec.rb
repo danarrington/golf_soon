@@ -20,7 +20,7 @@ describe TeeTimeParser do
     end
 
     it 'parses the tee time' do
-      expect(subject[:tee_time].to_time.hour).to eq 13
+      expect(subject[:tee_time].to_time.in_time_zone('Pacific Time (US & Canada)').hour).to eq 13
       expect(subject[:tee_time].to_time.min).to eq 57
     end
 

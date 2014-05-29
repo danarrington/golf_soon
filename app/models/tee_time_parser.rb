@@ -2,8 +2,8 @@ class TeeTimeParser
 
   def self.get_tee_time(cube, date)
 
-    time = Time.parse(cube.css('.time').first.text)
-    datetime = DateTime.new(date.year, date.month, date.day, time.hour, time.min, 0).change(:offset=>time.zone)
+    time = Time.zone.parse(cube.css('.time').first.text)
+    datetime = Time.zone.local(date.year, date.month, date.day, time.hour, time.min, 0)
 
     price = cube.css('.cost').first.text.match(/\$(?<price>\d+\.\d+)/)[:price].to_f
     players = cube.css('.player option').last.text

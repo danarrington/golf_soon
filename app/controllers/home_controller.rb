@@ -21,6 +21,6 @@ class HomeController < ApplicationController
     courses = Course.find(course_ids)
     current_user.courses << courses
 
-    render text: params[:course_ids].split(',')
+    redirect_to times_path
   end
 end

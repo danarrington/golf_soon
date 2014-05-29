@@ -11,16 +11,18 @@ x Filters
   x Sort by saving/time/price
   x # players
 - Index teetime/course
-- Deploy
+x Deploy
 
 x Get all times
 
 - Get icon info (holes, walking etc)
-
+- Automate get_latest_times
+- Auditable times
+- Add link to time
 
 *** Bugs ***
 -Choosing courses
   - Be able to remove favorites
-  - Redirect to times after submitting
+  x Redirect to times after submitting
 
 

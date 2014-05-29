@@ -6,10 +6,10 @@ x Persist times we don't have
 x Update existing times
 x Display all times
 x Display times for my favorites
-- Filters
-  - Weekend/All
-  - Sort by saving/time/price
-  - # players
+x Filters
+  x Weekend/All
+  x Sort by saving/time/price
+  x # players
 - Index teetime/course
 - Deploy
 

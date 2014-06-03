@@ -7,6 +7,11 @@ class TeeTimeController < ApplicationController
     @tee_times = TeeTime.get_times(filter)
     @filter = filter
   end
+
+  def update
+    DataParser.new.get_latest_times
+    render :text=>'ok'
+  end
 end
 
 

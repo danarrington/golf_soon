@@ -15,10 +15,12 @@ x Deploy
 
 x Get all times
 
-- Get icon info (holes, walking etc)
-- Automate get_latest_times
+x Automate get_latest_times
+- Process scheduler?
+- Loggly?
 - Auditable times
 - Add link to time
+- Get icon info (holes, walking etc)
 
 *** Bugs ***
 -Choosing courses

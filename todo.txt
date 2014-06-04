@@ -1,6 +1,7 @@
 - Get Walking/cart icon
-- Add link
+x Add link
 - Get # holes
+- Add Everett/Tacoma times
 - Edit course names
 
 - Process scheduler?

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506144907) do
+ActiveRecord::Schema.define(version: 20140604140528) do
 
   create_table "courses", force: true do |t|
     t.integer  "gn_id"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20140506144907) do
     t.integer  "gn_id",        limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "cart"
+    t.integer  "holes"
   end
 
   create_table "users", force: true do |t|

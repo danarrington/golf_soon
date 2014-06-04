@@ -11,6 +11,11 @@
         span.players.stat #{t.players} Players
         - if t.percent_off
           span.savings.stat Save #{t.percent_off}%
+        - if t.cart
+          img src="/assets/i_cart.gif"
+        - else
+          img src="/assets/i_walkingrate.gif"
+        img src="/assets/i_#{t.holes}.gif"
 
 
 .hidden-form

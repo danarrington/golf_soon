@@ -12,10 +12,13 @@ class TeeTimeParser
     link = cube.css('.btnCubeLink .orangeButton').first['href'] if cube.css('.btnCubeLink .orangeButton').any?
     course_id = cube.css('.courseName a').first['productid'].to_i
     gn_id = cube.css('.icons').first['id'].match(/TTS_(\d*)/)[1].to_i
+    cart = cube.css(".icons img[alt=\"Cart Included\"]").any?
+    holes = cube.css(".icons img[alt=\"9 Hole Time\"]").any? ? 9 : 18
 
     {tee_time: datetime, price: price, players: players,
                 percent_off: savings, booking_link: link,
-                course_id: course_id, gn_id:gn_id}
+                course_id: course_id, gn_id:gn_id, cart: cart,
+                holes: holes}
 
   end
 end

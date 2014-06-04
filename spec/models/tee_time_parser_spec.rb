@@ -30,6 +30,8 @@ describe TeeTimeParser do
     its([:booking_link]) { should eq '/seattle/tee-times/golf-courses/wa---seattle-metro/details?TID=216056326&TType=DISC'}
     its([:course_id]) { should eq 1037905}
     its([:gn_id]) {should eq 216056326}
+    its([:cart]) {should be_true}
+    its([:holes]) {should eq 18}
 
   end
 

@@ -1,3 +1,24 @@
+- Get Walking/cart icon
+- Add link
+- Get # holes
+- Edit course names
+
+- Process scheduler?
+- Delete old times (need less than 10k)
+- Mark taken times as taken
+- Loggly?
+- Auditable times
+- Add link to time
+- Get icon info (holes, walking etc)
+
+*** Bugs ***
+-Choosing courses
+  - Be able to remove favorites
+  x Redirect to times after submitting
+
+
+--------------------
+
 x Scrape page
 x Persist golf courses we don't have
 x When user signs in, if they have no courses ask them to pick some.
@@ -15,16 +36,5 @@ x Deploy
 
 x Get all times
 
-x Automate get_latest_times
-- Process scheduler?
-- Loggly?
-- Auditable times
-- Add link to time
-- Get icon info (holes, walking etc)
-
-*** Bugs ***
--Choosing courses
-  - Be able to remove favorites
-  x Redirect to times after submitting
 
 

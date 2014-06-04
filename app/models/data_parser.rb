@@ -3,7 +3,7 @@ class DataParser
   def get_latest_times
     (Date.today.to_date .. 7.days.from_now).each do |date|
       find_times_for date
-      sleep(5)
+      sleep(1)
     end
   end
 

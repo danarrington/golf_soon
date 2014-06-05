@@ -12,6 +12,10 @@ class TeeTimeController < ApplicationController
     DataParser.new.get_latest_times
     render :text=>'ok'
   end
+
+  def noop
+    render :text=>'ok'
+  end
 end
 
 

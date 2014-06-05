@@ -7,4 +7,5 @@ GolfSoon::Application.routes.draw do
   post '/pick_courses' => 'home#pick_courses_submit'
   match '/times' => 'tee_time#times', :as => :times, via: [:get, :post]
   match '/update_data' => 'tee_time#update', :as => :update, via: [:get, :post]
+  match '/noop' => 'tee_time#noop', :as => :noop, via: [:get, :post]
 end

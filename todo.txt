@@ -1,6 +1,6 @@
-- Get Walking/cart icon
+x Get Walking/cart icon
 x Add link
-- Get # holes
+x Get # holes
 - Add Everett/Tacoma times
 - Edit course names
 

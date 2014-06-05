@@ -12,7 +12,7 @@
         - if t.percent_off
           span.savings.stat Save #{t.percent_off}%
         - if t.cart
-          img src="/assets/i_cart.gif"
+          img src="#{image_url('i_cart.gif')}"
         - else
           img src="#{image_url('i_walkingrate.gif')}"
         img src="#{image_url("i_#{t.holes}.gif")}"

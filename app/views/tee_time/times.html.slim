@@ -14,8 +14,8 @@
         - if t.cart
           img src="/assets/i_cart.gif"
         - else
-          img src="/assets/i_walkingrate.gif"
-        img src="/assets/i_#{t.holes}.gif"
+          img src="#{image_url('i_walkingrate.gif')}"
+        img src="#{image_url("i_#{t.holes}.gif")}"
 
 
 .hidden-form

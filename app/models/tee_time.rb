@@ -6,7 +6,8 @@ class TeeTime < ActiveRecord::Base
   end
 
   def self.get_times(options)
-    query = all.where('tee_time > ?', Time.now)
+    last_data_run = DataRun.last
+    query = all.where('tee_time > ?', Time.now).where(last_data_run_id: last_data_run.id)
     query = query.where(course_id: options.user.courses.collect(&:id)) if options.user
     if options.days == 'weekend'
       saturday = Date.commercial(Date.today.year, Date.today.cweek, 6).in_time_zone('Pacific Time (US & Canada)')

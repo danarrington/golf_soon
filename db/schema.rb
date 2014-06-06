@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604140528) do
+ActiveRecord::Schema.define(version: 20140606133149) do
 
   create_table "courses", force: true do |t|
     t.integer  "gn_id"
@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(version: 20140604140528) do
     t.datetime "updated_at"
   end
 
+  create_table "data_runs", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "favorites", force: true do |t|
     t.integer  "user_id"
     t.integer  "course_id"
@@ -39,15 +44,16 @@ ActiveRecord::Schema.define(version: 20140604140528) do
   create_table "tee_times", force: true do |t|
     t.datetime "tee_time"
     t.integer  "course_id"
-    t.decimal  "price",                  precision: 5, scale: 2
+    t.decimal  "price",                      precision: 5, scale: 2
     t.integer  "players"
     t.integer  "percent_off"
     t.string   "booking_link"
-    t.integer  "gn_id",        limit: 8
+    t.integer  "gn_id",            limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "cart"
     t.integer  "holes"
+    t.integer  "last_data_run_id"
   end
 
   create_table "users", force: true do |t|

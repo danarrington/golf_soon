@@ -1,5 +1,6 @@
 class TeeTimeController < ApplicationController
 
+  skip_before_filter :verify_authenticity_token, :only => [:update]
 
   def times
     filter = TeeTimeFilter.new(params[:tee_time_filter])

@@ -1,16 +1,20 @@
 x Get Walking/cart icon
 x Add link
 x Get # holes
+- Add run id
+- Hide taken times
 - Add Everett/Tacoma times
 - Edit course names
 
 - Process scheduler?
+- View times for single course
 - Delete old times (need less than 10k)
 - Mark taken times as taken
 - Loggly?
 - Auditable times
 - Add link to time
 - Get icon info (holes, walking etc)
+- Index teetime/course Optimize data parsing
 
 *** Bugs ***
 -Choosing courses

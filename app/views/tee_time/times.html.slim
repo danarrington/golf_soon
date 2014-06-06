@@ -6,7 +6,7 @@
       .tee-time data-gnid=t.gn_id
         div.course-name = t.course.name
         span.time.stat
-          a href="http://www.golfnow.com/seattle/tee-times/golf-courses/details?TID=#{t.gn_id}&TType=DISC" #{pretty_time(t.tee_time)}
+          a href="http://www.golfnow.com/seattle/tee-times/golf-courses/details?TID=#{t.gn_id}&TType=DISC" title="updated #{time_ago_in_words(t.updated_at)} ago" #{pretty_time(t.tee_time)}
         span.price.stat #{t.pretty_price}
         span.players.stat #{t.players} Players
         - if t.percent_off

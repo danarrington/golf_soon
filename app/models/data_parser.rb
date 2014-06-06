@@ -1,6 +1,7 @@
 class DataParser
 
   def get_latest_times
+    @data_run = DataRun.create
     (Date.today.to_date .. 7.days.from_now).each do |date|
       find_times_for date
       sleep(1)
@@ -29,6 +30,7 @@ class DataParser
 
   def save_or_update_time(tee_time)
     existing_times = TeeTime.where(course_id: tee_time[:course_id], gn_id: tee_time[:gn_id])
+    tee_time[:last_data_run_id] = @data_run.id
     if existing_times.any?
       existing_time = existing_times.first
       existing_time.assign_attributes(tee_time)
